@@ -22,7 +22,7 @@ class IpSecurityUtils {
                     // 檢查 Proxy 的 IP 是否可信任的 (確保不是造假)
                     if (!IpSecurityUtils.isTrustedProxy(proxyIps, remoteAddress, config, errorlogger)) {
                         if (errorlogger) {
-                            errorlogger(`Deny X-Forward-For ${req.headers[IpSecurityUtils.xForwardedFor]}`);
+                            errorlogger(`Deny ip ${remoteAddress} access and X-Forward-For ${req.headers[IpSecurityUtils.xForwardedFor]}`);
                         }
                         res.status(403).end();
                         return;
